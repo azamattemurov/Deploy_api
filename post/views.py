@@ -17,7 +17,7 @@ class PostListView(generics.ListAPIView):
         return PostModel.objects.all()
 
 class UserPostListView(generics.ListAPIView):
-    serializer_class = PostSerializerr
+    serializer_class = PostSerializer
     permission_classes = [IsAuthenticated]
     pagination_class = CustomPagination
 
