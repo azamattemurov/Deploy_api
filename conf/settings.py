@@ -64,12 +64,11 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config and os.getenv('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config and os.getenv('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
-
+        'NAME': 'n41instagram',        # Ma'lumotlar bazasi nomi
+        'USER': 'postgres',            # Ma'lumotlar bazasi foydalanuvchisi nomi
+        'PASSWORD': 123,    # Ma'lumotlar bazasi foydalanuvchisi paroli
+        'HOST': 'localhost',         # Ma'lumotlar bazasi serveri manzili
+        'PORT': '5432',              # Ma'lumotlar bazasi porti
     }
 }
 
@@ -90,8 +89,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Tashkent'
-
+TIME_ZONE = 'utf-8'
 
 USE_I18N = True
 
