@@ -4,6 +4,7 @@ from pathlib import Path
 from decouple import config
 
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
@@ -62,12 +63,12 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('DB_NAME'),
-        'PORT': config('DB_PORT'),
-        'PASSWORD': config('DB_PASS'),
-        'HOST': config('DB_HOST'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config and os.getenv('DB_NAME'),
         'USER': config('DB_USER'),
+        'PASSWORD': config and os.getenv('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
 
     }
 }
@@ -126,7 +127,6 @@ EMAIL_HOST_USER = config('EMAIL_HOST')  # Your Gmail address
 EMAIL_HOST_PASSWORD = config('EMAIL_PASS')  # Your Gmail password or App Password if 2-step verification is enabled
 
 # Optional: If you want to specify a 'From' address for outgoing emails
-DEFAULT_FROM_EMAIL = 'sotvoldiyevazamat193@gmail.com'
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=7),
