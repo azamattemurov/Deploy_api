@@ -56,6 +56,7 @@ class PostCommentListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     pagination_class = CustomPagination
 
+
     def get_queryset(self):
         post_id = self.kwargs.get('pk')
         return PostCommentModel.objects.filter(post_id=post_id)
@@ -64,8 +65,11 @@ class PostCommentListView(generics.ListAPIView):
 class PostCommentCreateView(generics.CreateAPIView):
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticated]
+    queryset = PostCommentModel.objects.all()
 
     def perform_create(self, serializer):
+        if serializer.is_valid():
+            print(serializer.validated_data)
         post_id = self.kwargs.get('pk')
         serializer.save(user=self.request.user, post_id=post_id)
 

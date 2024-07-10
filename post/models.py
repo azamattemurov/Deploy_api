@@ -32,6 +32,7 @@ class PostLikeModel(BaseModel):
 
 
 class PostCommentModel(BaseModel):
+    objects = None
     post = models.ForeignKey(PostModel, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='post_comments')
     comment = models.TextField()

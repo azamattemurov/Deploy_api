@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework.authtoken',
     'rest_framework_simplejwt.token_blacklist',
+    # required for serving swagger ui's css/js files
+    'drf_yasg',
 
     'users',
     'shared',
